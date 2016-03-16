@@ -7,4 +7,5 @@ package fr.soat.cm;
  */
 public class CoffeeMachine {
 
+
 }
