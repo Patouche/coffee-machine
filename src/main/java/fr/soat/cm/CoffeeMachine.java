@@ -8,4 +8,13 @@ package fr.soat.cm;
 public class CoffeeMachine {
 
 
+    /**
+     * Translate a incoming order into a drink maker protocol string.
+     *
+     * @param incomingOrder the incoming order
+     * @return a string in drink maker protocol
+     */
+    public String translate(final IncomingOrder incomingOrder) {
+        return incomingOrder.getOrderType().getIdentifier();
+    }
 }
