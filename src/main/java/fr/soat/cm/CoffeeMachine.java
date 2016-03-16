@@ -15,6 +15,9 @@ public class CoffeeMachine {
      * @return a string in drink maker protocol
      */
     public String translate(final IncomingOrder incomingOrder) {
-        return incomingOrder.getOrderType().getIdentifier();
+        return incomingOrder.getOrderType().getIdentifier()
+                + ":"
+                + (incomingOrder.getSugarNumber() > 0 ? incomingOrder.getSugarNumber() : "")
+                + ":";
     }
 }
