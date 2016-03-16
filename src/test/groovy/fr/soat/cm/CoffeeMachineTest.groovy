@@ -44,4 +44,27 @@ class CoffeeMachineTest extends Specification {
             OrderType.CHOCOLATE || 2           || "H:2:"
     }
 
+    @Unroll
+    def "order contains #sugarNumber sugar the drink maker should add a stick for #type"() {
+        given:
+            def incomingOrder = new IncomingOrder()
+            incomingOrder.setOrderType(type)
+            incomingOrder.setSugarNumber(sugarNumber)
+        when:
+            def result = new CoffeeMachine().translate(incomingOrder);
+        then:
+            result == instruction
+        where:
+            type                || sugarNumber || instruction
+            OrderType.COFFEE    || 0           || "C::"
+            OrderType.COFFEE    || 1           || "C:1:0"
+            OrderType.COFFEE    || 2           || "C:2:0"
+            OrderType.TEA       || 0           || "T::"
+            OrderType.TEA       || 1           || "T:1:0"
+            OrderType.TEA       || 2           || "T:2:0"
+            OrderType.CHOCOLATE || 0           || "H::"
+            OrderType.CHOCOLATE || 1           || "H:1:0"
+            OrderType.CHOCOLATE || 2           || "H:2:0"
+    }
+
 }
